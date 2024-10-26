@@ -1,0 +1,36 @@
+<div>
+    <h2>Products</h2>
+
+    <!-- SEARCH -->
+
+    <!-- PRODUCT TABLE -->
+    <table id="product-table" *ngIf="products.length">
+        <thead>
+            <tr>
+                <th>Logo</th>
+                <th>Nombre del producto</th>
+                <th>Descripción</th>
+                <th>Fecha de liberación</th>
+                <th>Fecha de reestructuración</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.dateRelease }}</td>
+                <td>{{ product.dateRevision }}</td>
+                <!-- <td>DROPDOWNN</td> -->
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- PAGINATOR -->
+     <div>
+        <select name="" id=""></select>
+        <button></button>
+        <button></button>
+     </div>
+</div>
