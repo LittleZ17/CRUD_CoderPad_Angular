@@ -2,26 +2,24 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductListComponent } from './feature/products/product-list/product-list.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PaginatorComponent } from './shared/paginator/paginator.component';
-import { SearchComponent } from './shared/search/search.component';
+import { FormsModule } from '@angular/forms';
+import { ProductsModule } from './feature/products/products.module';
+import { SharedModule } from './shared/shared.module';
 
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
-    PaginatorComponent,
-    SearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ProductsModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

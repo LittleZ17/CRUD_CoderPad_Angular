@@ -9,9 +9,7 @@ export class SearchComponent {
 
   @Output() searchChange = new EventEmitter<string>();
 
-  onSearch(termSearch: string): void {
-    console.log(termSearch)
-   
+  onSearch(termSearch: string): void {   
     this.searchChange.emit(termSearch.trim());
   };
 

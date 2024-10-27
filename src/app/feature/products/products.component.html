@@ -1,9 +1,10 @@
 <div>
     <!-- SEARCH -->
-    <!-- <app-search (searchChange)="onSearchChange($event)"></app-search> -->
+    <app-search (searchChange)="onSearchChange($event)"></app-search>
 
     <!-- PRODUCT TABLE -->
-    <table id="product-table">
+     <app-product-list [productsData]="showProductsPerPage"></app-product-list>
+    <!-- <table id="product-table">
         <thead>
             <tr>
                 <th>Logo</th>
@@ -15,17 +16,22 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let product of productsData">
+            <tr *ngFor="let product of showProductsPerPage">
                 <td>{{ product.logo }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.dateRelease }}</td>
                 <td>{{ product.dateRevision }}</td>
-                <!-- <td>DROPDOWNN</td> -->
+                 <td>DROPDOWNN</td> 
             </tr>
         </tbody>
-    </table>
+    </table> -->
 
     <!-- PAGINATOR -->
-    <!-- <app-paginator [totalItems]="totalProducts" [itemsPerPage]="productsPerPage" [currentPage]="currentPage" (pageChange)="onPageChange($event)" (itemsPerPageOnChange)="productsPerPageChange($event)"></app-paginator> -->
+    <app-paginator 
+        [totalItems]="totalProducts" 
+        [itemsPerPage]="productsPerPage" 
+        [currentPage]="currentPage"
+        (pageChange)="onPageChange($event)" 
+        (itemsPerPageOnChange)="productsPerPageChange($event)"></app-paginator>
 </div>
