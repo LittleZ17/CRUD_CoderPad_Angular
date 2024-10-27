@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 import { SearchComponent } from './search/search.component';
 import { PaginatorComponent } from './paginator/paginator.component';
-import { FormsModule } from '@angular/forms';
+import { CustomButtonComponent } from './button/button.component';
 
 
 
@@ -10,6 +12,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     SearchComponent,
     PaginatorComponent,
+    CustomButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -17,7 +20,8 @@ import { FormsModule } from '@angular/forms';
   ],
   exports:[
     SearchComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    CustomButtonComponent
   ]
 })
 export class SharedModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/core/models/product';
 import { ProductService } from 'src/app/core/services/product.service';
 
@@ -11,6 +12,7 @@ export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
   showProductsPerPage: Product[] = [];
+
   searchProduct: string = '';
 
   // HANDLE PAGINATOR
@@ -18,8 +20,13 @@ export class ProductsComponent implements OnInit {
   productsPerPage: number = 5;
   currentPage: number = 1;
 
+  ROUTE_NEW: string = 'products/new'
 
-  constructor(private readonly _productsSrv: ProductService) { }
+
+  constructor(
+    private readonly _productsSrv: ProductService,
+    private readonly _router: Router,
+  ) { }
 
 
   ngOnInit(): void {
@@ -48,7 +55,6 @@ export class ProductsComponent implements OnInit {
   private _updateListProductShow() {
     const filteredProductBySearch = this.filterProductBySearch();
 
-    console.log(filteredProductBySearch)
     this.totalProducts = filteredProductBySearch.length;
 
     if (this.currentPage > Math.ceil(this.totalProducts / this.productsPerPage) && this.totalProducts > 0) {
@@ -78,5 +84,8 @@ export class ProductsComponent implements OnInit {
     this._updateListProductShow();
   }
 
+  navigateAddNewProduct(){
+    this._router.navigate([this.ROUTE_NEW])
+  }
 
 }

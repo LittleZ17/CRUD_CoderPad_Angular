@@ -1,37 +1,14 @@
 <div>
-    <!-- SEARCH -->
-    <app-search (searchChange)="onSearchChange($event)"></app-search>
+    <div>
+        <!-- SEARCH -->
+        <app-search (searchChange)="onSearchChange($event)"></app-search>
+        <app-custom-button textBtn="Agregar" color="primary" (btnClick)="navigateAddNewProduct()"></app-custom-button>
+    </div>
 
     <!-- PRODUCT TABLE -->
-     <app-product-list [productsData]="showProductsPerPage"></app-product-list>
-    <!-- <table id="product-table">
-        <thead>
-            <tr>
-                <th>Logo</th>
-                <th>Nombre del producto</th>
-                <th>Descripción</th>
-                <th>Fecha de liberación</th>
-                <th>Fecha de reestructuración</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr *ngFor="let product of showProductsPerPage">
-                <td>{{ product.logo }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.dateRelease }}</td>
-                <td>{{ product.dateRevision }}</td>
-                 <td>DROPDOWNN</td> 
-            </tr>
-        </tbody>
-    </table> -->
+    <app-product-list [productsData]="showProductsPerPage"></app-product-list>
 
     <!-- PAGINATOR -->
-    <app-paginator 
-        [totalItems]="totalProducts" 
-        [itemsPerPage]="productsPerPage" 
-        [currentPage]="currentPage"
-        (pageChange)="onPageChange($event)" 
-        (itemsPerPageOnChange)="productsPerPageChange($event)"></app-paginator>
+    <app-paginator [totalItems]="totalProducts" [itemsPerPage]="productsPerPage" [currentPage]="currentPage"
+        (pageChange)="onPageChange($event)" (itemsPerPageOnChange)="productsPerPageChange($event)"></app-paginator>
 </div>

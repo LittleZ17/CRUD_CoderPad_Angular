@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ProductsRoutingModule } from './products-routing.module';
-import { ProductListComponent } from './product-list/product-list.component';
-import {  } from 'src/app/shared/paginator/paginator.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+
+import { ProductListComponent } from './product-list/product-list.component';
 import { ProductsComponent } from './products.component';
+import { FormProductComponent } from './form-product/form-product.component';
 
 
 @NgModule({
   declarations: [
     ProductsComponent,
     ProductListComponent,
+    FormProductComponent,
   ],
   imports: [
     CommonModule,
