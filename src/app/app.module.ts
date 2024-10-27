@@ -7,13 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductListComponent } from './feature/products/product-list/product-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginatorComponent } from './shared/paginator/paginator.component';
+import { SearchComponent } from './shared/search/search.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

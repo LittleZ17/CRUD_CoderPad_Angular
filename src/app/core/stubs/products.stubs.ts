@@ -3,7 +3,7 @@ import { Product } from "../models/product";
 export const PRODUCT_STUB: Product[] =[
     {
         id: '123',
-        name: "nombre del producto",
+        name: "PATATA",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
         dateRelease: new Date('2024-10-28'),
@@ -115,7 +115,7 @@ export const PRODUCT_STUB: Product[] =[
     },
     {
         id: '789',
-        name: "nombre del producto",
+        name: "test search",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
         dateRelease: new Date('2024-10-28'),

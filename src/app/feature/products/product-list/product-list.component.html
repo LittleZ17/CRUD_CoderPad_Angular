@@ -1,5 +1,6 @@
 <div>
     <!-- SEARCH -->
+    <app-search (searchChange)="onSearchChange($event)"></app-search>
 
     <!-- PRODUCT TABLE -->
     <table id="product-table">
@@ -26,11 +27,6 @@
     </table>
 
     <!-- PAGINATOR -->
-    <app-paginator
-    [totalItems]="totalProducts"
-    [itemsPerPage]="productsPerPage"
-    [currentPage]="currentPage"
-    (pageChange)="onPageChange($event)"
-    (itemsPerPageOnChange)="productsPerPageChange($event)"
-    ></app-paginator>
+    <app-paginator [totalItems]="totalProducts" [itemsPerPage]="productsPerPage" [currentPage]="currentPage"
+        (pageChange)="onPageChange($event)" (itemsPerPageOnChange)="productsPerPageChange($event)"></app-paginator>
 </div>

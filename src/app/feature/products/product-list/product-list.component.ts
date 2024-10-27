@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiResponse, Product } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/product';
 import { ProductService } from 'src/app/core/services/product.service';
-import { PRODUCT_STUB } from 'src/app/core/stubs/products.stubs';
 
 @Component({
   selector: 'app-product-list',
@@ -11,7 +10,7 @@ import { PRODUCT_STUB } from 'src/app/core/stubs/products.stubs';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
-  showProductsPerPage: Product[] = []; 
+  showProductsPerPage: Product[] = [];
   searchProduct: string = '';
 
   // HANDLE PAGINATOR
@@ -35,20 +34,48 @@ export class ProductListComponent implements OnInit {
     })
   }
 
-  onPageChange(page: number){
+  onPageChange(page: number) {
     this.currentPage = page;
     this._updateListProductShow();
   }
 
-  productsPerPageChange(numPerPage: number){
+  productsPerPageChange(numPerPage: number) {
     this.productsPerPage = numPerPage;
     this.currentPage = 1;
     this._updateListProductShow();
   }
 
-  private _updateListProductShow(){
+  private _updateListProductShow() {
+    const filteredProductBySearch = this.filterProductBySearch();
+
+    console.log(filteredProductBySearch)
+    this.totalProducts = filteredProductBySearch.length;
+
+    if (this.currentPage > Math.ceil(this.totalProducts / this.productsPerPage) && this.totalProducts > 0) {
+      this.currentPage = 1;
+    }
+
     const startIdx = (this.currentPage - 1) * this.productsPerPage;
-    this.showProductsPerPage = this.products.slice(startIdx, startIdx + this.productsPerPage)
+    this.showProductsPerPage = filteredProductBySearch.slice(startIdx, startIdx + this.productsPerPage)
+  }
+
+  filterProductBySearch(): Product[] {
+    if (!this.searchProduct) {
+      return this.products;
+    }
+  
+    const query = this.searchProduct.toLowerCase();
+    const filtered = this.products.filter(product => 
+      product.name.toLowerCase().includes(query)
+    );
+  
+    return filtered;
+  }
+
+  onSearchChange(termSearch: string): void {
+    this.searchProduct = termSearch;
+    this.currentPage = 1
+    this._updateListProductShow();
   }
 
 
