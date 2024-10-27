@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Product, ApiResponse } from '../models/product';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, of, throwError } from 'rxjs';
+import { PRODUCT_STUB } from '../stubs/products.stubs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,11 @@ export class ProductService {
   constructor(private readonly _http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    return this._http.get<Product[]>(this._urlApi)
-      .pipe(
-        catchError(this._handleError)
-      );
+    // return this._http.get<Product[]>(this._urlApi)
+    //   .pipe(
+    //     catchError(this._handleError)
+    //   );
+    return of(PRODUCT_STUB)
   }
 
   getProductById(productId: string): Observable<Product> {

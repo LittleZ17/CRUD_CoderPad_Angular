@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiResponse, Product } from 'src/app/core/models/product';
 import { ProductService } from 'src/app/core/services/product.service';
+import { PRODUCT_STUB } from 'src/app/core/stubs/products.stubs';
 
 @Component({
   selector: 'app-product-list',
@@ -10,11 +11,13 @@ import { ProductService } from 'src/app/core/services/product.service';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
-
+  showProductsPerPage: Product[] = []; 
   searchProduct: string = '';
 
+  // HANDLE PAGINATOR
+  totalProducts: number = 0;
+  productsPerPage: number = 5;
   currentPage: number = 1;
-  itemsPage: number = 5 | 10 | 15;
 
 
   constructor(private readonly _productsSrv: ProductService) { }
@@ -27,9 +30,26 @@ export class ProductListComponent implements OnInit {
   private _loadProducts() {
     this._productsSrv.getProducts().subscribe(data => {
       this.products = data;
+      this.totalProducts = this.products.length;
+      this._updateListProductShow();
     })
   }
 
+  onPageChange(page: number){
+    this.currentPage = page;
+    this._updateListProductShow();
+  }
+
+  productsPerPageChange(numPerPage: number){
+    this.productsPerPage = numPerPage;
+    this.currentPage = 1;
+    this._updateListProductShow();
+  }
+
+  private _updateListProductShow(){
+    const startIdx = (this.currentPage - 1) * this.productsPerPage;
+    this.showProductsPerPage = this.products.slice(startIdx, startIdx + this.productsPerPage)
+  }
 
 
 }

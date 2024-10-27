@@ -1,10 +1,8 @@
 <div>
-    <h2>Products</h2>
-
     <!-- SEARCH -->
 
     <!-- PRODUCT TABLE -->
-    <table id="product-table" *ngIf="products.length">
+    <table id="product-table">
         <thead>
             <tr>
                 <th>Logo</th>
@@ -16,8 +14,8 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let product of products">
-                <td>{{ product.id }}</td>
+            <tr *ngFor="let product of showProductsPerPage">
+                <td>{{ product.logo }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.dateRelease }}</td>
@@ -28,9 +26,11 @@
     </table>
 
     <!-- PAGINATOR -->
-     <div>
-        <select name="" id=""></select>
-        <button></button>
-        <button></button>
-     </div>
+    <app-paginator
+    [totalItems]="totalProducts"
+    [itemsPerPage]="productsPerPage"
+    [currentPage]="currentPage"
+    (pageChange)="onPageChange($event)"
+    (itemsPerPageOnChange)="productsPerPageChange($event)"
+    ></app-paginator>
 </div>
