@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/core/models/product';
-import { ProductService } from 'src/app/core/services/product.service';
+import { TEXT } from 'src/app/shared/utils';
 
 @Component({
   selector: 'app-product-list',
@@ -11,6 +11,7 @@ export class ProductListComponent {
 
   @Input() productsData: Product[] = [];
 
+  textHtml = TEXT.table;
 
   constructor() {}
 }

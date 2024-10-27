@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { SearchComponent } from './search/search.component';
-import { PaginatorComponent } from './paginator/paginator.component';
-import { CustomButtonComponent } from './button/button.component';
+import { SearchComponent } from './components/search/search.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { CustomButtonComponent } from './components/button/button.component';
 
 
 

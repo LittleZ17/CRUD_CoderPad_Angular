@@ -1,0 +1,12 @@
+<div>
+    <span>{{ totalItems }}{{ textHtml.total }} </span>
+
+    <label for="itemsPerPage">{{ textHtml.productPerPage }}</label>
+    <select id="itemsPerPage" (change)="changeItemsPerPage($event)">
+            <option *ngFor="let opt of numberPerPageOpt" [value]="opt" >{{ opt }}</option>
+    </select>
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">{{ textHtml.back }}</button>
+
+    <span>{{ textHtml.page}} {{ currentPage }} - {{ totalPages }}</span>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">{{ textHtml.forward }}</button>
+ </div>

@@ -21,11 +21,12 @@ export class ProductService {
     return of(PRODUCT_STUB)
   }
 
-  getProductById(productId: string): Observable<Product> {
-    return this._http.get<Product>(`${this._urlApi}/${productId}`)
-      .pipe(
-        catchError(this._handleError)
-      );
+  verificationIdExist(productId: string): Observable<boolean> {
+    // return this._http.get<boolean>(`${this._urlApi}/verification/${productId}`)
+    //   .pipe(
+    //     catchError(this._handleError)
+    //   );
+    return of(false)
   }
 
   addProduct(newProduct: Product): Observable<ApiResponse<Product>> {

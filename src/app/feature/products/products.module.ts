@@ -6,6 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductsComponent } from './products.component';
 import { FormProductComponent } from './form-product/form-product.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,6 +17,8 @@ import { FormProductComponent } from './form-product/form-product.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     ProductsRoutingModule,
     SharedModule,
   ]

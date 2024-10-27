@@ -3,8 +3,8 @@ export interface Product {
     name: string,
     description: string,
     logo: string,
-    dateRelease: Date,
-    dateRevision: Date,
+    date_release: Date,
+    date_revision: Date,
 }
 
 export interface ApiResponse<T>{

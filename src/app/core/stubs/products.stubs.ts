@@ -6,119 +6,119 @@ export const PRODUCT_STUB: Product[] =[
         name: "PATATA",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '456',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '789',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '123',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '456',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '789',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '123',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '456',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '789',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '123',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '456',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '789',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '123',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '456',
         name: "nombre del producto",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     },
     {
         id: '789',
         name: "test search",
         description: "Descripción del producto",
         logo: 'urlLogodProducto.png',
-        dateRelease: new Date('2024-10-28'),
-        dateRevision: new Date('2024-10-27')
+        date_release: new Date('2024-10-28'),
+        date_revision: new Date('2024-10-27')
     }
 ]

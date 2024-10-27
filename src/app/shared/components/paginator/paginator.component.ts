@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TEXT } from '../../utils';
 
 @Component({
   selector: 'app-paginator',
@@ -15,6 +16,8 @@ export class PaginatorComponent {
   @Output() itemsPerPageOnChange = new EventEmitter<number>();
   
   numberPerPageOpt: number[] = [5, 10, 20];
+  textHtml = TEXT.table;
+
 
   get totalPages(): number {
     return Math.ceil(this.totalItems / this.itemsPerPage)

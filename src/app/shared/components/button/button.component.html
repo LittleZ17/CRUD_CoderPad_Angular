@@ -1,5 +1,7 @@
 <button
+style="cursor: pointer;"
     class="button"
+    [disabled]="isDisabled"
     [ngClass]=" color === 'primary' ? 'btn-primary' : 'btn-secondary' "
     (click)="onClick()"
 >{{ textBtn }}</button>

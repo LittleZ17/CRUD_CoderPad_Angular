@@ -6,11 +6,7 @@
     <table id="product-table">
         <thead>
             <tr>
-                <th>Logo</th>
-                <th>Nombre del producto</th>
-                <th>Descripción</th>
-                <th>Fecha de liberación</th>
-                <th>Fecha de reestructuración</th>
+                <th *ngFor="let column of textHtml.columnNameTable">{{ column }}</th>
             </tr>
         </thead>
 
@@ -19,8 +15,8 @@
                 <td>{{ product.logo }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
-                <td>{{ product.dateRelease }}</td>
-                <td>{{ product.dateRevision }}</td>
+                <td>{{ product.date_release }}</td>
+                <td>{{ product.date_revision }}</td>
                 <!-- <td>DROPDOWNN</td> -->
             </tr>
         </tbody>
