@@ -6,7 +6,7 @@
     </div>
 
     <!-- PRODUCT TABLE -->
-    <app-product-list [productsData]="showProductsPerPage"></app-product-list>
+    <app-product-list [productsData]="showProductsPerPage" (productIdDeleted)="onProductDeleted($event)"></app-product-list>
 
     <!-- PAGINATOR -->
     <app-paginator [totalItems]="totalProducts" [itemsPerPage]="productsPerPage" [currentPage]="currentPage"

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { CustomButtonComponent } from './components/button/button.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
@@ -13,6 +14,7 @@ import { CustomButtonComponent } from './components/button/button.component';
     SearchComponent,
     PaginatorComponent,
     CustomButtonComponent,
+    ModalComponent,
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { CustomButtonComponent } from './components/button/button.component';
   exports:[
     SearchComponent,
     PaginatorComponent,
-    CustomButtonComponent
+    CustomButtonComponent,
+    ModalComponent
   ]
 })
 export class SharedModule { }

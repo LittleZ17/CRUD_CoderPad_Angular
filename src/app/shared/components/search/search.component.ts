@@ -6,7 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
-
+  
   @Output() searchChange = new EventEmitter<string>();
 
   onSearch(termSearch: string): void {   

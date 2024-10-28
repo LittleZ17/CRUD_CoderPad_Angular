@@ -9,24 +9,25 @@ import { PRODUCT_STUB } from '../stubs/products.stubs';
 })
 export class ProductService {
 
-  private readonly _urlApi = "http://localhost:3002/bp/products";
+  private _urlApi: string = '/bp/products';
+
 
   constructor(private readonly _http: HttpClient) { }
 
-  getProducts(): Observable<Product[]> {
-    // return this._http.get<Product[]>(this._urlApi)
-    //   .pipe(
-    //     catchError(this._handleError)
-    //   );
-    return of(PRODUCT_STUB)
+  getProducts(): Observable<ApiResponse<Product[]>> {
+    return this._http.get<ApiResponse<Product[]>>(this._urlApi)
+      .pipe(
+        catchError(this._handleError)
+      );
+    // return of(PRODUCT_STUB)
   }
 
   verificationIdExist(productId: string): Observable<boolean> {
-    // return this._http.get<boolean>(`${this._urlApi}/verification/${productId}`)
-    //   .pipe(
-    //     catchError(this._handleError)
-    //   );
-    return of(false)
+    return this._http.get<boolean>(`${this._urlApi}/verification/${productId}`)
+      .pipe(
+        catchError(this._handleError)
+      );
+    // return of(false)
   }
 
   addProduct(newProduct: Product): Observable<ApiResponse<Product>> {

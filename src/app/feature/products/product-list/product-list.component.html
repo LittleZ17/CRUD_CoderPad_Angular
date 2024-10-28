@@ -1,12 +1,9 @@
 <div>
-    <!-- SEARCH -->
-    <!-- <app-search (searchChange)="onSearchChange($event)"></app-search> -->
-
-    <!-- PRODUCT TABLE -->
     <table id="product-table">
         <thead>
             <tr>
                 <th *ngFor="let column of textHtml.columnNameTable">{{ column }}</th>
+                <th></th>
             </tr>
         </thead>
 
@@ -17,11 +14,23 @@
                 <td>{{ product.description }}</td>
                 <td>{{ product.date_release }}</td>
                 <td>{{ product.date_revision }}</td>
-                <!-- <td>DROPDOWNN</td> -->
+                <td>
+                    <select id="menu" #actionSelect
+                        (change)="handleActionPerProduct(product)">
+                        <option value="" disabled selected>{{textHtml.action}}</option>
+                        <option value="edit">{{textHtml.edit}}</option>
+                        <option value="delete">{{textHtml.delete}}</option>
+                    </select>
+                </td>
             </tr>
         </tbody>
     </table>
 
-    <!-- PAGINATOR -->
-    <!-- <app-paginator [totalItems]="totalProducts" [itemsPerPage]="productsPerPage" [currentPage]="currentPage" (pageChange)="onPageChange($event)" (itemsPerPageOnChange)="productsPerPageChange($event)"></app-paginator> -->
+    <app-modal
+        [showModal]="showModalConfirm"
+        [modalMessage]="modalMsg"
+        [productId]="productIdAction"
+        (confirm)="onConfirmDelete($event)"
+        (cancel)="onCancelDelete()">
+    </app-modal>
 </div>

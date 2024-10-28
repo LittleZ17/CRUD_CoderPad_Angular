@@ -13,7 +13,10 @@ export const TEXT = {
         productPerPage: 'Productos por página:',
         page: 'Página: ',
         forward: 'Adelante',
-        back: 'Atrás'
+        back: 'Atrás',
+        action: 'Acciones',
+        delete: 'Borrar',
+        edit: 'Editar'
     },
     form: {
         title:'Formulario de Registro',
@@ -44,5 +47,8 @@ export const TEXT = {
             label: 'Fecha Revisión',
             placeholder: 'Introduzca la fecha a liberar el producto',
         },
+    },
+    modal:{
+        text: '¿Estás seguro de eliminar el producto {name}?'
     }
 }

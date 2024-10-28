@@ -35,7 +35,10 @@ export class ProductsComponent implements OnInit {
 
   private _loadProducts() {
     this._productsSrv.getProducts().subscribe(data => {
-      this.products = data;
+      if (!data.data) {
+        return;
+      }
+      this.products = data.data;
       this.totalProducts = this.products.length;
       this._updateListProductShow();
     })
@@ -69,12 +72,12 @@ export class ProductsComponent implements OnInit {
     if (!this.searchProduct) {
       return this.products;
     }
-  
+
     const query = this.searchProduct.toLowerCase();
-    const filtered = this.products.filter(product => 
+    const filtered = this.products.filter(product =>
       product.name.toLowerCase().includes(query)
     );
-  
+
     return filtered;
   }
 
@@ -84,8 +87,18 @@ export class ProductsComponent implements OnInit {
     this._updateListProductShow();
   }
 
-  navigateAddNewProduct(){
+  navigateAddNewProduct() {
     this._router.navigate([this.ROUTE_NEW])
+  }
+
+  onProductDeleted(productId: string) {
+  console.log(productId)
+    this._productsSrv.deleteProduct(productId).subscribe({
+      next: (res) => {
+        console.log(res)
+        this._loadProducts();
+      }
+    });
   }
 
 }
