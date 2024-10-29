@@ -52,3 +52,9 @@ Sigue estos pasos para levantar el proyecto:
 
 
 Esto abrirá la aplicación en tu navegador predeterminado en http://localhost:4200
+
+### Notas:
+- Testing incompleto por cuestion de tiempo.
+
+ **Gracias por la atención a mi solicitud, y espero que pueda reflejar mis skills para encajar en el equipo**:
+- Saludos Zindy!
