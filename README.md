@@ -1,27 +1,54 @@
-# ProductsCrudDevsu
+# CRUD Angular Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+![Angular Logo](https://angular.io/assets/images/logos/angular/angular.png)
 
-## Development server
+Este proyecto es una aplicación CRUD (Crear, Leer, Actualizar, Eliminar) construida con Angular. Utiliza formularios reactivos, manejo de errores, peticiones a servicios HTTP y enrutamiento. Cumpliwndo con los requerimientos establecidos.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Características
 
-## Code scaffolding
+- **CRUD Completo**: Crear, Leer, Actualizar y Eliminar registros.
+- **Formularios Reactivos**: Validación y manejo de formularios de manera sencilla y eficaz.
+- **Manejo de Errores**: Captura y visualización de errores para mejorar la experiencia del usuario.
+- **Peticiones HTTP**: Comunicación efectiva con un servicio backend.
+- **Rutas**: Navegación fluida entre diferentes vistas de la aplicación.
+- **Interfaz de Usuario**: Diseño intuitivo y responsivo.
+- **Testing**: Pruebas integradas para asegurar la funcionalidad.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Requisitos Previos
 
-## Build
+Antes de ejecutar este proyecto, asegúrate de tener instalado:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Node.js](https://nodejs.org/) (incluye npm)
+- [Angular CLI](https://angular.io/cli)
 
-## Running unit tests
+Además, necesitas tener el servicio backend en funcionamiento en el puerto **3002** para conectar ambas aplicaciones.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Instalación
 
-## Running end-to-end tests
+Sigue estos pasos para levantar el proyecto:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Clona el repositorio**:
 
-## Further help
+   ```bash
+   git clone https://github.com/tu-usuario/tu-repositorio.git
+   cd tu-repositorio
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. **Instala dependencias**:
+
+   ```bash
+   npm install
+
+3. **Instala dependencias**:
+
+   ```bash
+   cd ruta/al/proyecto/backend
+   npm start
+
+
+3. **Ejecuta la aplicacion**:
+
+   ```bash
+   ng serve
+
+
+Esto abrirá la aplicación en tu navegador predeterminado en http://localhost:4200
