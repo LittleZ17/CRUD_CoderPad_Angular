@@ -1,0 +1,91 @@
+.table-container {
+    overflow-x: auto;
+    padding: 25px;
+    background-color: #ffff;
+
+    .table-product {
+        width: 100%;
+        border-collapse: collapse;
+
+        thead th {
+            background-color: #f5f6fa;
+            color: #12285f;
+            text-align: left;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        tbody td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #555;
+            font-size: 14px;
+
+            .logo {
+
+                img {
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+
+            .custom-select{
+                position: relative;
+                display: inline-block;
+
+                #menu{
+                    display: none;
+                }
+                .select-button {
+                    color: #12285f;
+                    border: none;
+                    border-radius: 4px;
+                    padding: 5px;
+                    cursor: pointer;
+                    
+                    font-size: 20px;
+                    margin-left: 5px;
+                
+                    &:hover{
+                        background-color: #f5f6fa;
+                    }
+                }
+
+                .dropdown{
+                    display: block;
+                    position: absolute;
+                    background-color: white;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                    z-index: 1;
+
+                    .option{
+                        padding: 10px;
+                        cursor: pointer;
+                        
+                        &:hover{
+                            background-color: #f5f6fa;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #b0b0b0;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background-color: #f5f6fa;
+}

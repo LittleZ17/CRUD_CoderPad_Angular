@@ -86,8 +86,15 @@ export class FormProductComponent implements OnInit {
 
   // RESET FORM
   resetForm(): void {
+    if (this.isEditMode) {
+      this.productForm.get('id')?.enable();
+      this.productForm.reset(); 
+      this.productForm.get('id')?.setValue(this.product?.id);
+      this.productForm.get('id')?.disable();
+    } else {
+      this.productForm.reset();
+    }
     this.productForm.get('date_revision')?.reset();
-    this.productForm.reset()
   }
 
   enabledResetBtn(): boolean {

@@ -12,7 +12,7 @@ export const TEXT = {
         ],
         total: 'Resultados',
         productPerPage: 'Productos por página:',
-        page: 'Página: ',
+        page: 'Pág: ',
         forward: 'Adelante',
         back: 'Atrás',
         action: 'Acciones',

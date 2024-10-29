@@ -1,12 +1,24 @@
-<div>
-    <span>{{ totalItems }}{{ textHtml.total }} </span>
+<div class="container">
+        <span class="text-pag">{{ totalItems }}{{ textHtml.total }} </span>
 
-    <label for="itemsPerPage">{{ textHtml.productPerPage }}</label>
-    <select id="itemsPerPage" (change)="changeItemsPerPage($event)">
-            <option *ngFor="let opt of numberPerPageOpt" [value]="opt" >{{ opt }}</option>
-    </select>
-    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">{{ textHtml.back }}</button>
+        <div class="pag-container">
 
-    <span>{{ textHtml.page}} {{ currentPage }} - {{ totalPages }}</span>
-    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">{{ textHtml.forward }}</button>
- </div>
+                <div class="select">
+                        <label for="itemsPerPage"></label>
+                        <select id="itemsPerPage" (change)="changeItemsPerPage($event)">
+                                <option *ngFor="let opt of numberPerPageOpt" [value]="opt">{{ opt }}</option>
+                        </select>
+                </div>
+
+                <div class="pag">
+                        <button class="btn" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+                                <i class="material-icons">arrow_back</i>
+                        </button>
+
+                        <span>{{ textHtml.page}} {{ currentPage }} - {{ totalPages }}</span>
+                        <button class="btn" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+                                <i class="material-icons">arrow_forward</i>
+                        </button>
+                </div>
+        </div>
+</div>

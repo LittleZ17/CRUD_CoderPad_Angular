@@ -1,0 +1,39 @@
+.container {
+    background-color: #ffff;
+    padding: 10px 25px 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .text-pag {
+        color: #12285f;
+    }
+
+    .pag-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .select {
+            display: flex;
+            flex-direction: column;
+            width: 50px;
+            align-self: flex-end;
+        }
+
+        .pag {
+            display: flex;
+            align-items: center;
+
+            .btn {
+                border: transparent solid 1px;
+                border-radius: 30px;
+
+                &:hover {
+                    background-color: #dadce2;
+                    cursor: pointer;
+                }
+            }
+
+        }
+    }
+}

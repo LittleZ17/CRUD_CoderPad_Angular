@@ -1,5 +1,5 @@
-<div>
-    <table id="product-table">
+<div class="table-container">
+    <table id="product-table" class="table-product">
         <thead>
             <tr>
                 <th *ngFor="let column of textHtml.columnNameTable">{{ column }}</th>
@@ -9,17 +9,21 @@
 
         <tbody>
             <tr *ngFor="let product of productsData">
-                <td>{{ product.logo }}</td>
+                <td class="logo"><img [src]="product.logo" alt="Logo del producto"></td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
-                <td>{{ product.date_release }}</td>
-                <td>{{ product.date_revision }}</td>
+                <td>{{ product.date_release | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ product.date_revision | date: 'dd/MM/yyyy' }}</td>
                 <td>
-                    <select id="menu" [(ngModel)]="action" (change)="handleActionPerProduct(action, product)">
-                        <option value="" disabled selected>{{textHtml.action}}</option>
-                        <option value="edit">{{textHtml.edit}}</option>
-                        <option value="delete">{{textHtml.delete}}</option>
-                    </select>
+                    <div class="custom-select">
+                        <div class="select-button" (click)="toggleSelect(product.id)">
+                            &#x22EE;
+                        </div>
+                        <div class="dropdown" *ngIf="showOptionsAction[product.id]">
+                            <div class="option" (click)="handleActionPerProduct('edit', product)">{{ textHtml.edit }}</div>
+                            <div class="option" (click)="handleActionPerProduct('delete', product)">{{ textHtml.delete }}</div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         </tbody>
