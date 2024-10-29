@@ -40,9 +40,8 @@ export class ProductListComponent {
       });
       this.resetAction();
     } else if (action === 'delete') {
-      // this.showModalConfirm = true;
       this.productIdAction = product.id;
-      this.modalMsg = TEXT.modal.text.replace('{name}', product.name)
+      this.modalMsg = TEXT.modal.OKDelete.replace('{name}', product.name)
       this._modalSrv.show(this.modalMsg, true)
     }
   }

@@ -97,6 +97,7 @@ export class ProductsComponent implements OnInit {
   onProductDeleted(productId: string) {
     this._productsSrv.deleteProduct(productId).subscribe({
       next: (res) => {
+        this._modalSrv.hide();
         this._loadProducts();
       },
       error: (err) => {
@@ -106,7 +107,8 @@ export class ProductsComponent implements OnInit {
           errorMsg = err.error.message; 
         }
         this._modalSrv.show(errorMsg, false)
-      }
+      },
+      complete: () => this._modalSrv.show(TEXT.modal.OKDelete, false)
     });
   }
 

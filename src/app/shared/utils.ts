@@ -50,6 +50,12 @@ export const TEXT = {
         },
     },
     modal:{
-        text: '¿Estás seguro de eliminar el producto {name}?',
+        OKCreate: 'Producto creado',
+        OKUpdate: 'Producto Actualizado' ,
+        OKDelete:'Producto Eliminado',
+        KOCreate: 'Error al crear el producto:',
+        KOUpdate: 'Error al actualizar el producto:' ,
+        KODelete:  'Error al eliminar el producto:',
+        confirmDelete: '¿Estás seguro de eliminar el producto {name}?',
     }
 }

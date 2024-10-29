@@ -37,6 +37,7 @@ export class ModalComponent implements OnInit {
 
 
   onConfirm(): void {
+    console.log(this.productId)
     if (this.productId !== undefined) {
       this.confirm.emit(this.productId);
     }

@@ -30,7 +30,6 @@ export class FormProductComponent implements OnInit {
   ) {
     this.productForm = this._fb.group({
       id: ['', [
-        // id: [{ value: '', disabled: this.isEditMode }
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(10),
@@ -173,51 +172,42 @@ export class FormProductComponent implements OnInit {
 
 
   onSubmit(): void {
-    if (this.productForm.valid) {
-
-      const formValue: Product = {
-        ...this.productForm.getRawValue(),
-        date_release: new Date(this.productForm.get('date_release')?.value).toISOString(),
-        date_revision: new Date(this.productForm.get('date_revision')?.value).toISOString()
-      };
-
-
-      if (this.isEditMode) {
-        this._productSrv.updateProduct(formValue).subscribe({
-          next: (response) => {
-            this._modalSrv.show('Producto Actualizado', true)
-          },
-          error: (err) => {
-            let errorMsg = TEXT.error;
-
-            if (err.error && err.error.message) {
-              errorMsg = err.error.message;
-            }
-            this._modalSrv.show(errorMsg, true)
-          },
-          complete: () => {
-            this.productForm.reset();
-            this._router.navigate([this.ROUTE_LIST])
-          }
-        });
-
-      } else {
-
-        this._productSrv.addProduct(formValue).subscribe({
-          next: (response) => {
-            console.log('Producto creado:', response);
-          },
-          error: (err) => {
-            console.error('Error al crear el producto:', err);
-          },
-          complete: () => {
-            this.productForm.reset();
-            this._router.navigate([this.ROUTE_LIST])
-          }
-        });
-      }
+    if (!this.productForm.valid) {
+      return;
     }
+  
+    const formValue: Product = {
+      ...this.productForm.getRawValue(),
+      date_release: this.formatDate(this.productForm.get('date_release')?.value),
+      date_revision: this.formatDate(this.productForm.get('date_revision')?.value),
+    };
+  
+    const request$ = this.isEditMode 
+      ? this._productSrv.updateProduct(formValue) 
+      : this._productSrv.addProduct(formValue);
+  
+    request$.subscribe({
+      next: (response) => {
+        const message = this.isEditMode ? TEXT.modal.OKUpdate : TEXT.modal.OKCreate;
+        console.log(message, response);
+        this._modalSrv.show(message, false);
+      },
+      error: (err) => {
+        const errorMsg = err.error?.message || TEXT.error;
+        this._modalSrv.show(errorMsg, false);
+        console.error(this.isEditMode ? TEXT.modal.KOUpdate : TEXT.modal.KOCreate , err);
+      },
+      complete: () => {
+        this.productForm.reset();
+        this._router.navigate([this.ROUTE_LIST]);
+      },
+    });
   }
+  
+  private formatDate(date: any): string {
+    return new Date(date).toISOString();
+  }
+  
 
 
 }

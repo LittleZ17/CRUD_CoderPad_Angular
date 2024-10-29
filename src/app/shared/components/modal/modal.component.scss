@@ -12,7 +12,6 @@
 
     .modal-content {
         background: white;
-        // padding: 20px;
         border-radius: 5px;
         max-width: 400px;
         width: 100%;
@@ -22,6 +21,7 @@
         .text-modal{
             min-height: 60px;
             padding: 20px;
+            text-align: center;
         }
 
         .btn-close{
