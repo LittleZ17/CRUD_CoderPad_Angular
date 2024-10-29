@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { catchError, distinctUntilChanged, map, of } from 'rxjs';
 import { Product } from 'src/app/core/models/product';
+import { ModalService } from 'src/app/core/services/modal.service';
 import { ProductService } from 'src/app/core/services/product.service';
 import { TEXT } from 'src/app/shared/utils';
 
@@ -12,17 +13,20 @@ import { TEXT } from 'src/app/shared/utils';
   styleUrls: ['./form-product.component.scss']
 })
 export class FormProductComponent implements OnInit {
-  @Input() isEditMode: boolean = false;
+  isEditMode: boolean = false;
 
   productForm: FormGroup;
   product?: Product;
 
   textHtml = TEXT.form;
 
+  ROUTE_LIST = '/products'
+
   constructor(
     private readonly _fb: FormBuilder,
-    private readonly _productSrv: ProductService,
     private readonly _router: Router,
+    private readonly _productSrv: ProductService,
+    private readonly _modalSrv: ModalService,
   ) {
     this.productForm = this._fb.group({
       id: ['', [
@@ -51,11 +55,10 @@ export class FormProductComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if (history.state.product) {
+      this.product = history.state.product;
+      this.isEditMode = true;
 
-    const navigation = this._router.getCurrentNavigation();
-
-    if (navigation?.extras.state) {
-      this.product = navigation.extras.state['product'];
       if (this.product) {
         this.productForm.patchValue({
           id: this.product.id,
@@ -89,9 +92,7 @@ export class FormProductComponent implements OnInit {
   }
 
   enabledResetBtn(): boolean {
-    console.log(Object.values(this.productForm.controls).some(control => control.value !== null && control.value !== ''))
     return Object.values(this.productForm.controls).some(control => control.value !== null && control.value !== '');
-
   }
 
   // VALIDATE ID EXIST
@@ -181,14 +182,22 @@ export class FormProductComponent implements OnInit {
       };
 
 
-      console.log(formValue);
       if (this.isEditMode) {
         this._productSrv.updateProduct(formValue).subscribe({
           next: (response) => {
-            console.log('Producto editado:', response);
+            this._modalSrv.show('Producto Actualizado', true)
           },
           error: (err) => {
-            console.error('Error al editar el producto:', err);
+            let errorMsg = TEXT.error;
+
+            if (err.error && err.error.message) {
+              errorMsg = err.error.message;
+            }
+            this._modalSrv.show(errorMsg, true)
+          },
+          complete: () => {
+            this.productForm.reset();
+            this._router.navigate([this.ROUTE_LIST])
           }
         });
 
@@ -201,7 +210,10 @@ export class FormProductComponent implements OnInit {
           error: (err) => {
             console.error('Error al crear el producto:', err);
           },
-          complete: () => this.productForm.reset()
+          complete: () => {
+            this.productForm.reset();
+            this._router.navigate([this.ROUTE_LIST])
+          }
         });
       }
     }

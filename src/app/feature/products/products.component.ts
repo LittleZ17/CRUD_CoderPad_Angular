@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/core/models/product';
+import { ModalService } from 'src/app/core/services/modal.service';
 import { ProductService } from 'src/app/core/services/product.service';
+import { TEXT } from 'src/app/shared/utils';
 
 @Component({
   selector: 'app-products',
@@ -25,6 +27,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private readonly _productsSrv: ProductService,
+    private readonly _modalSrv: ModalService,
     private readonly _router: Router,
   ) { }
 
@@ -92,11 +95,17 @@ export class ProductsComponent implements OnInit {
   }
 
   onProductDeleted(productId: string) {
-  console.log(productId)
     this._productsSrv.deleteProduct(productId).subscribe({
       next: (res) => {
-        console.log(res)
         this._loadProducts();
+      },
+      error: (err) => {
+        let errorMsg = TEXT.error;
+        
+        if (err.error && err.error.message) {
+          errorMsg = err.error.message; 
+        }
+        this._modalSrv.show(errorMsg, false)
       }
     });
   }

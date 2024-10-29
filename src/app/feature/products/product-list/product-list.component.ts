@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/core/models/product';
-import { ProductService } from 'src/app/core/services/product.service';
+import { ModalService } from 'src/app/core/services/modal.service';
 import { TEXT } from 'src/app/shared/utils';
 
 @Component({
@@ -11,7 +11,6 @@ import { TEXT } from 'src/app/shared/utils';
 })
 export class ProductListComponent {
 
-  @ViewChild('actionSelect') actionSelect!: ElementRef;
   @Input() productsData: Product[] = [];
   @Output() productIdDeleted = new EventEmitter<string>(); 
 
@@ -21,42 +20,46 @@ export class ProductListComponent {
 
   showModalConfirm: boolean = false;
   productIdAction: string = '';
+  action: string = ''; 
   modalMsg: string = '';
 
   constructor(
     private readonly _router: Router,
+    private readonly _modalSrv: ModalService,
   ) { }
 
 
-  handleActionPerProduct(product: Product) {
-    const action = this.actionSelect.nativeElement.value;
+  handleActionPerProduct(action: string, product: Product) {
+
+    console.log(action)
+    console.log(product)
 
     if (action === 'edit') {
       this._router.navigate([`${this.ROUTE_EDIT}/${product.id}`], {
         state: { product }
       });
+      this.resetAction();
     } else if (action === 'delete') {
-      this.showModalConfirm = true;
+      // this.showModalConfirm = true;
       this.productIdAction = product.id;
       this.modalMsg = TEXT.modal.text.replace('{name}', product.name)
+      this._modalSrv.show(this.modalMsg, true)
     }
-    this.actionSelect.nativeElement.value = '';
   }
 
   onConfirmDelete(productId: string): void {
-    console.log('confirme')
     this.showModalConfirm = false;
     this.productIdDeleted.emit(productId);
-    // this._productSrv.deleteProduct(productId).subscribe({
-    //   next: () => {
-    //     console.log('eliminado', productId)
-    //     // this._loadProducts();
-    //   }
-    // });
+    this.resetAction();
   }
 
   onCancelDelete(): void {
     this.showModalConfirm = false;
+    this.resetAction();
+  }
+
+  private resetAction(): void {
+    this.action = '';
   }
 
 }

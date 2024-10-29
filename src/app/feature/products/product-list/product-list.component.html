@@ -15,8 +15,7 @@
                 <td>{{ product.date_release }}</td>
                 <td>{{ product.date_revision }}</td>
                 <td>
-                    <select id="menu" #actionSelect
-                        (change)="handleActionPerProduct(product)">
+                    <select id="menu" [(ngModel)]="action" (change)="handleActionPerProduct(action, product)">
                         <option value="" disabled selected>{{textHtml.action}}</option>
                         <option value="edit">{{textHtml.edit}}</option>
                         <option value="delete">{{textHtml.delete}}</option>

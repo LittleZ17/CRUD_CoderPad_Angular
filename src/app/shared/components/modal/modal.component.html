@@ -1,7 +1,7 @@
 <div class="modal" *ngIf="showModal">
     <div class="modal-content">
         <p class="text-modal">{{ modalMessage }}</p>
-        <div class="modal-btn">
+        <div class="modal-btn" *ngIf="isError">
             <app-custom-button
                 class="btn"
                 textBtn="Cancelar" 
@@ -16,5 +16,14 @@
                 (btnClick)="onConfirm()">
             </app-custom-button>
         </div>
+
+        <div *ngIf="!isError" class="btn-close">
+            <app-custom-button 
+                class="btn"
+                textBtn="Cerrar" 
+                color="secondary" 
+                (btnClick)="onCancel()">
+            </app-custom-button>
+          </div>
     </div>
 </div>

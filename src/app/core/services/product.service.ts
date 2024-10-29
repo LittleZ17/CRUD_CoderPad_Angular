@@ -3,6 +3,7 @@ import { Product, ApiResponse } from '../models/product';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 import { PRODUCT_STUB } from '../stubs/products.stubs';
+import { TEXT } from 'src/app/shared/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -38,27 +39,26 @@ export class ProductService {
   }
 
   updateProduct(product: Product): Observable<ApiResponse<Product>> {
-    return this._http.put<ApiResponse<Product>>(this._urlApi, product)
+    return this._http.put<ApiResponse<Product>>(`${this._urlApi}/${product.id}`, product)
       .pipe(
         catchError(this._handleError)
       );
   }
 
   deleteProduct(productId: string): Observable<ApiResponse<void>> {
-    return this._http.delete<ApiResponse<void>>(`${this._urlApi}/${productId}`)
+    return this._http.delete<ApiResponse<void>>(`${this._urlApi}uy/${productId}`)
       .pipe(
         catchError(this._handleError)
       );
   }
 
   private _handleError(error: HttpErrorResponse) {
-    let errorMsg = 'Error';
-    if (error.error instanceof ErrorEvent) {
-      errorMsg = `Error: ${error.error.message}`;
-    } else {
-      const apiErrorResponse = error.error;
-      errorMsg = `Error: ${apiErrorResponse.message} - ${apiErrorResponse.name} `
+    let errorMsg = TEXT.error; 
+    if (error.error && error.error.message) {
+        errorMsg = error.error.message;
+   
+    return throwError(() => new Error(errorMsg));
     }
-    return throwError(errorMsg);
+    return throwError(() => new Error(errorMsg)); 
   }
 }

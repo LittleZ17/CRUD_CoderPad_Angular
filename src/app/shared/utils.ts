@@ -1,4 +1,5 @@
 export const TEXT = {
+    error: 'Ocurrió un error inesperado. Intenta de nuevo más tarde.',
     table:{
         search: 'Search...',
         btnAdd: 'Agregar',
@@ -49,6 +50,6 @@ export const TEXT = {
         },
     },
     modal:{
-        text: '¿Estás seguro de eliminar el producto {name}?'
+        text: '¿Estás seguro de eliminar el producto {name}?',
     }
 }

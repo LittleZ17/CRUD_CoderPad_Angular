@@ -13,7 +13,6 @@ export class CustomButtonComponent {
   @Output() btnClick = new EventEmitter<void>;
 
   onClick(): void{
-    console.log('click')
     this.btnClick.emit()
   }
 
